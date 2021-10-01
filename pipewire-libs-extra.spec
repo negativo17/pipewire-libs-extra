@@ -1,4 +1,4 @@
-%global spaversion   0.2
+%global spaversion 0.2
 
 Name:       pipewire-libs-extra
 Summary:    PipeWire extra plugins
@@ -9,6 +9,7 @@ URL:        https://pipewire.org/
 
 Source0:    https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/%{version}/pipewire-%{version}.tar.gz
 
+BuildRequires:  alsa-lib-devel
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  gcc-c++
 BuildRequires:  pkgconfig(dbus-1)
@@ -52,4 +53,3 @@ install -pm 0755 -D %{_vpath_builddir}/spa/plugins/ffmpeg/libspa-ffmpeg.so \
 
 * Thu Sep 23 2021 Simone Caronni <negativo17@gmail.com> - 0.3.36-1
 - First build.
-
