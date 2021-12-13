@@ -1,8 +1,9 @@
 %global spaversion 0.2
+%global __meson_auto_features disabled
 
 Name:       pipewire-libs-extra
 Summary:    PipeWire extra plugins
-Version:    0.3.39
+Version:    0.3.40
 Release:    1%{?dist}
 License:    MIT
 URL:        https://pipewire.org/
@@ -12,6 +13,7 @@ Source0:    https://gitlab.freedesktop.org/pipewire/pipewire/-/archive/%{version
 BuildRequires:  alsa-lib-devel
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  gcc-c++
+BuildRequires:  git
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(bluez) >= 4.101
 BuildRequires:  pkgconfig(libfreeaptx)
@@ -28,11 +30,11 @@ PipeWire media server Bluetooth aptX codec plugin.
 
 %build
 %meson \
-  --auto-features=disabled \
   -D examples=disabled \
   -D bluez5=enabled \
   -D bluez5-codec-aptx=enabled \
-  -D ffmpeg=enabled
+  -D ffmpeg=enabled \
+  -D session-managers=[]
 
 %meson_build spa-codec-bluez5-aptx spa-ffmpeg
 
@@ -48,6 +50,9 @@ install -pm 0755 -D %{_vpath_builddir}/spa/plugins/ffmpeg/libspa-ffmpeg.so \
 %{_libdir}/spa-%{spaversion}/ffmpeg
 
 %changelog
+* Mon Dec 13 2021 Simone Caronni <negativo17@gmail.com> - 0.3.40-1
+- Update to 0.3.40.
+
 * Fri Oct 29 2021 Simone Caronni <negativo17@gmail.com> - 0.3.39-1
 - Update to 0.3.39.
 
