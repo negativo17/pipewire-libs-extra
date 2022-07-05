@@ -3,7 +3,7 @@
 
 Name:       pipewire-libs-extra
 Summary:    PipeWire extra plugins
-Version:    0.3.52
+Version:    0.3.53
 Release:    1%{?dist}
 License:    MIT
 URL:        https://pipewire.org/
@@ -50,6 +50,9 @@ install -pm 0755 -D %{_vpath_builddir}/spa/plugins/ffmpeg/libspa-ffmpeg.so \
 %{_libdir}/spa-%{spaversion}/ffmpeg
 
 %changelog
+* Tue Jul 05 2022 Simone Caronni <negativo17@gmail.com> - 0.3.53-1
+- Update to 0.3.53.
+
 * Fri Jun 17 2022 Simone Caronni <negativo17@gmail.com> - 0.3.52-1
 - Update to 0.3.52.
 
