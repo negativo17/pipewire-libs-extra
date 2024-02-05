@@ -3,7 +3,7 @@
 
 Name:       pipewire-libs-extra
 Summary:    PipeWire extra plugins
-Version:    1.0.2
+Version:    1.0.3
 Release:    1%{?dist}
 License:    MIT
 URL:        https://pipewire.org/
@@ -14,6 +14,7 @@ BuildRequires:  alsa-lib-devel
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  gcc-c++
 BuildRequires:  git
+BuildRequires:  liblc3plus-devel
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(bluez) >= 4.101
 BuildRequires:  pkgconfig(libfreeaptx)
@@ -34,6 +35,7 @@ PipeWire media server Bluetooth aptX codec plugin.
   -D examples=disabled \
   -D bluez5=enabled \
   -D bluez5-codec-aptx=enabled \
+  -D bluez5-codec-lc3plus=enabled \
   -D ffmpeg=enabled \
   -D session-managers=[]
 
@@ -51,6 +53,10 @@ install -pm 0755 -D %{_vpath_builddir}/spa/plugins/ffmpeg/libspa-ffmpeg.so \
 %{_libdir}/spa-%{spaversion}/ffmpeg
 
 %changelog
+* Mon Feb 05 2024 Simone Caronni <negativo17@gmail.com> - 1.0.3-1
+- Update to 1.0.3.
+- Enable LC3plus support.
+
 * Wed Jan 31 2024 Simone Caronni <negativo17@gmail.com> - 1.0.2-1
 - Update to 1.0.2.
 
