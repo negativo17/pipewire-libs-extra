@@ -3,7 +3,7 @@
 
 Name:       pipewire-libs-extra
 Summary:    PipeWire extra plugins
-Version:    0.3.47
+Version:    0.3.67
 Release:    1%{?dist}
 License:    MIT
 URL:        https://pipewire.org/
@@ -16,6 +16,7 @@ BuildRequires:  gcc-c++
 BuildRequires:  git
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(bluez) >= 4.101
+BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libfreeaptx)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  sbc-devel
@@ -50,6 +51,9 @@ install -pm 0755 -D %{_vpath_builddir}/spa/plugins/ffmpeg/libspa-ffmpeg.so \
 %{_libdir}/spa-%{spaversion}/ffmpeg
 
 %changelog
+* Wed Apr 03 2024 Simone Caronni <negativo17@gmail.com> - 0.3.67-1
+- Update to 0.3.67.
+
 * Fri Mar 11 2022 Simone Caronni <negativo17@gmail.com> - 0.3.47-1
 - Update to 0.3.47.
 
