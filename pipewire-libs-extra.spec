@@ -3,7 +3,7 @@
 
 Name:       pipewire-libs-extra
 Summary:    PipeWire extra plugins
-Version:    1.0.8
+Version:    1.2.5
 Release:    1%{?dist}
 License:    MIT
 URL:        https://pipewire.org/
@@ -53,6 +53,10 @@ install -pm 0755 -D %{_vpath_builddir}/spa/plugins/ffmpeg/libspa-ffmpeg.so \
 %{_libdir}/spa-%{spaversion}/ffmpeg
 
 %changelog
+* Tue Oct 01 2024 Simone Caronni <negativo17@gmail.com> - 1.2.5-1
+- Update to 1.2.5.
+- Trim changelog.
+
 * Tue Sep 24 2024 Simone Caronni <negativo17@gmail.com> - 1.0.8-1
 - Update to 1.0.8.
 
@@ -77,90 +81,3 @@ install -pm 0755 -D %{_vpath_builddir}/spa/plugins/ffmpeg/libspa-ffmpeg.so \
 
 * Mon Jan 15 2024 Simone Caronni <negativo17@gmail.com> - 1.0.1-1
 - Update to 1.0.1.
-
-* Mon Dec 04 2023 Simone Caronni <negativo17@gmail.com> - 1.0.0-1
-- Update to 1.0.0.
-
-* Fri Nov 10 2023 Simone Caronni <negativo17@gmail.com> - 0.3.84-1
-- Update to 0.3.84.
-
-* Tue Oct 17 2023 Simone Caronni <negativo17@gmail.com> - 0.3.82-1
-- Update to 0.3.82.
-
-* Fri Sep 22 2023 Simone Caronni <negativo17@gmail.com> - 0.3.80-1
-- Update to 0.3.80.
-
-* Wed Aug 23 2023 Simone Caronni <negativo17@gmail.com> - 0.3.78-1
-- Update to 0.3.78.
-
-* Mon Aug 07 2023 Simone Caronni <negativo17@gmail.com> - 0.3.77-1
-- Update to 0.3.77.
-
-* Wed Jun 28 2023 Simone Caronni <negativo17@gmail.com> - 0.3.72-1
-- Update to 0.3.72.
-
-* Thu May 11 2023 Simone Caronni <negativo17@gmail.com> - 0.3.70-1
-- Update to 0.3.70.
-
-* Wed Apr 12 2023 Simone Caronni <negativo17@gmail.com> - 0.3.68-1
-- Update to 0.3.68.
-
-* Thu Mar 16 2023 Simone Caronni <negativo17@gmail.com> - 0.3.67-1
-- Update to 0.3.67.
-
-* Fri Jan 20 2023 Simone Caronni <negativo17@gmail.com> - 0.3.64-1
-- Update to 0.3.64.
-
-* Tue Dec 20 2022 Simone Caronni <negativo17@gmail.com> - 0.3.63-1
-- Update to 0.3.63.
-
-* Tue Dec 13 2022 Simone Caronni <negativo17@gmail.com> - 0.3.62-1
-- Update to 0.3.62.
-
-* Mon Nov 28 2022 Simone Caronni <negativo17@gmail.com> - 0.3.61-1
-- Update to 0.3.61.
-
-* Mon Nov 21 2022 Simone Caronni <negativo17@gmail.com> - 0.3.60-1
-- Update to 0.3.60.
-
-* Tue Oct 11 2022 Simone Caronni <negativo17@gmail.com> - 0.3.59-1
-- Update to 0.3.59.
-
-* Sat Sep 17 2022 Simone Caronni <negativo17@gmail.com> - 0.3.58-1
-- Update to 0.3.58.
-
-* Sun Sep 04 2022 Simone Caronni <negativo17@gmail.com> - 0.3.57-1
-- Update to 0.3.57.
-
-* Tue Jul 05 2022 Simone Caronni <negativo17@gmail.com> - 0.3.53-1
-- Update to 0.3.53.
-
-* Fri Jun 17 2022 Simone Caronni <negativo17@gmail.com> - 0.3.52-1
-- Update to 0.3.52.
-
-* Tue May 03 2022 Simone Caronni <negativo17@gmail.com> - 0.3.51-1
-- Update to 0.3.51.
-
-* Wed Apr 06 2022 Simone Caronni <negativo17@gmail.com> - 0.3.49-1
-- Update to 0.3.49.
-
-* Fri Mar 11 2022 Simone Caronni <negativo17@gmail.com> - 0.3.48-1
-- Update to 0.3.48.
-
-* Sun Feb 06 2022 Simone Caronni <negativo17@gmail.com> - 0.3.45-1
-- Update to 0.3.45.
-
-* Fri Jan 21 2022 Simone Caronni <negativo17@gmail.com> - 0.3.43-1
-- Update to 0.3.43.
-
-* Mon Dec 13 2021 Simone Caronni <negativo17@gmail.com> - 0.3.40-1
-- Update to 0.3.40.
-
-* Fri Oct 29 2021 Simone Caronni <negativo17@gmail.com> - 0.3.39-1
-- Update to 0.3.39.
-
-* Fri Oct 01 2021 Simone Caronni <negativo17@gmail.com> - 0.3.38-1
-- Update to 0.3.38.
-
-* Thu Sep 23 2021 Simone Caronni <negativo17@gmail.com> - 0.3.36-1
-- First build.
