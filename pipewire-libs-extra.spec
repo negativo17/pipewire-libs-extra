@@ -6,8 +6,8 @@
 
 Name:       pipewire-libs-extra
 Summary:    PipeWire extra plugins
-Version:    1.2.7
-Release:    2%{?dist}
+Version:    1.4.1
+Release:    1%{?dist}
 License:    MIT
 URL:        https://pipewire.org/
 
@@ -25,6 +25,8 @@ BuildRequires:  pkgconfig(bluez) >= 4.101
 BuildRequires:  pkgconfig(libfreeaptx)
 BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libavcodec)
+BuildRequires:  pkgconfig(libebur128)
+BuildRequires:  pkgconfig(libswscale)
 BuildRequires:  sbc-devel
 
 Requires:       pipewire >= %{version}
@@ -41,6 +43,7 @@ PipeWire media server Bluetooth aptX codec plugin.
   -D bluez5=enabled \
   -D bluez5-codec-aptx=enabled \
   -D bluez5-codec-lc3plus=%{?_with_lc3plus:enabled}%{!?_with_lc3plus:disabled} \
+  -D ebur128=enabled \
   -D ffmpeg=enabled \
   -D session-managers=[]
 
@@ -49,6 +52,7 @@ PipeWire media server Bluetooth aptX codec plugin.
 %if %{with lc3plus}
     spa-codec-bluez5-lc3plus \
 %endif
+    spa-filter-graph-plugin-ebur128 \
     spa-ffmpeg
 
 %install
@@ -60,6 +64,8 @@ install -pm 0755 -D %{_vpath_builddir}/spa/plugins/bluez5/libspa-codec-bluez5-lc
 %endif
 install -pm 0755 -D %{_vpath_builddir}/spa/plugins/ffmpeg/libspa-ffmpeg.so \
     %{buildroot}%{_libdir}/spa-%{spaversion}/ffmpeg/libspa-ffmpeg.so
+install -pm 0755 -D %{_vpath_builddir}/spa/plugins/filter-graph/libspa-filter-graph-plugin-ebur128.so \
+    %{buildroot}%{_libdir}/spa-%{spaversion}/filter-graph/libspa-filter-graph-plugin-ebur128.so
 
 %files
 %license COPYING
@@ -69,8 +75,13 @@ install -pm 0755 -D %{_vpath_builddir}/spa/plugins/ffmpeg/libspa-ffmpeg.so \
 %endif
 %dir %{_libdir}/spa-%{spaversion}/ffmpeg
 %{_libdir}/spa-%{spaversion}/ffmpeg/libspa-ffmpeg.so
+%{_libdir}/spa-%{spaversion}/filter-graph/libspa-filter-graph-plugin-ebur128.so
 
 %changelog
+* Wed Mar 26 2025 Simone Caronni <negativo17@gmail.com> - 1.4.1-1
+- Update to 1.4.1.
+- Enable ebur128.
+
 * Wed Mar 26 2025 Simone Caronni <negativo17@gmail.com> - 1.2.7-2
 - Make lc3plus conditional, does not currently build with version 1.5.1.
 
