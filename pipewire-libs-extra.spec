@@ -1,10 +1,13 @@
 %global spaversion 0.2
 %global __meson_auto_features disabled
 
+# Does not currently build with LC3plus 1.5.1
+%bcond lc3plus 0
+
 Name:       pipewire-libs-extra
 Summary:    PipeWire extra plugins
 Version:    1.2.7
-Release:    1%{?dist}
+Release:    2%{?dist}
 License:    MIT
 URL:        https://pipewire.org/
 
@@ -14,7 +17,9 @@ BuildRequires:  alsa-lib-devel
 BuildRequires:  meson >= 0.49.0
 BuildRequires:  gcc-c++
 BuildRequires:  git
+%if %{with lc3plus}
 BuildRequires:  liblc3plus-devel
+%endif
 BuildRequires:  pkgconfig(dbus-1)
 BuildRequires:  pkgconfig(bluez) >= 4.101
 BuildRequires:  pkgconfig(libfreeaptx)
@@ -35,24 +40,40 @@ PipeWire media server Bluetooth aptX codec plugin.
   -D examples=disabled \
   -D bluez5=enabled \
   -D bluez5-codec-aptx=enabled \
-  -D bluez5-codec-lc3plus=enabled \
+  -D bluez5-codec-lc3plus=%{?_with_lc3plus:enabled}%{!?_with_lc3plus:disabled} \
   -D ffmpeg=enabled \
   -D session-managers=[]
 
-%meson_build spa-codec-bluez5-aptx spa-ffmpeg
+%meson_build \
+    spa-codec-bluez5-aptx \
+%if %{with lc3plus}
+    spa-codec-bluez5-lc3plus \
+%endif
+    spa-ffmpeg
 
 %install
 install -pm 0755 -D %{_vpath_builddir}/spa/plugins/bluez5/libspa-codec-bluez5-aptx.so \
-   %{buildroot}%{_libdir}/spa-%{spaversion}/bluez5/libspa-codec-bluez5-aptx.so
+    %{buildroot}%{_libdir}/spa-%{spaversion}/bluez5/libspa-codec-bluez5-aptx.so
+%if %{with lc3plus}
+install -pm 0755 -D %{_vpath_builddir}/spa/plugins/bluez5/libspa-codec-bluez5-lc3plus.so \
+    %{buildroot}%{_libdir}/spa-%{spaversion}/bluez5/libspa-codec-bluez5-lc3plus.so
+%endif
 install -pm 0755 -D %{_vpath_builddir}/spa/plugins/ffmpeg/libspa-ffmpeg.so \
-   %{buildroot}%{_libdir}/spa-%{spaversion}/ffmpeg/libspa-ffmpeg.so
+    %{buildroot}%{_libdir}/spa-%{spaversion}/ffmpeg/libspa-ffmpeg.so
 
 %files
 %license COPYING
 %{_libdir}/spa-%{spaversion}/bluez5/libspa-codec-bluez5-aptx.so
-%{_libdir}/spa-%{spaversion}/ffmpeg
+%if %{with lc3plus}
+%{_libdir}/spa-%{spaversion}/bluez5/libspa-codec-bluez5-lc3plus.so
+%endif
+%dir %{_libdir}/spa-%{spaversion}/ffmpeg
+%{_libdir}/spa-%{spaversion}/ffmpeg/libspa-ffmpeg.so
 
 %changelog
+* Wed Mar 26 2025 Simone Caronni <negativo17@gmail.com> - 1.2.7-2
+- Make lc3plus conditional, does not currently build with version 1.5.1.
+
 * Wed Nov 27 2024 Simone Caronni <negativo17@gmail.com> - 1.2.7-1
 - Update to 1.2.7.
 
