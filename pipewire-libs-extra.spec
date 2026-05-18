@@ -3,7 +3,7 @@
 
 Name:       pipewire-libs-extra
 Summary:    PipeWire extra plugins
-Version:    1.6.2
+Version:    1.6.5
 Release:    1%{?dist}
 License:    MIT
 URL:        https://pipewire.org/
@@ -68,6 +68,9 @@ install -pm 0755 -D %{_vpath_builddir}/spa/plugins/ffmpeg/libspa-ffmpeg.so \
 %{_libdir}/spa-%{spaversion}/ffmpeg/libspa-ffmpeg.so
 
 %changelog
+* Mon May 18 2026 Simone Caronni <negativo17@gmail.com> - 1.6.5-1
+- Update to 1.6.5.
+
 * Tue Mar 17 2026 Simone Caronni <negativo17@gmail.com> - 1.6.2-1
 - Update to 1.6.2.
 - Re-enable LC3plus with a patch for the new API.
