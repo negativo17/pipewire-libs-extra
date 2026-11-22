@@ -4,7 +4,7 @@
 Name:       pipewire-libs-extra
 Summary:    PipeWire extra plugins
 Version:    1.6.11
-Release:    1%{?dist}
+Release:    2%{?dist}
 License:    MIT
 URL:        https://pipewire.org/
 
@@ -25,7 +25,6 @@ BuildRequires:  pkgconfig(glib-2.0)
 BuildRequires:  pkgconfig(libavcodec)
 BuildRequires:  pkgconfig(libavfilter)
 BuildRequires:  pkgconfig(libswscale)
-BuildRequires:  pkgconfig(lilv-0)
 BuildRequires:  sbc-devel
 
 Requires:       pipewire >= %{version}
@@ -44,13 +43,13 @@ PipeWire media server Bluetooth aptX codec plugin.
   -D bluez5-codec-ldac-dec=disabled \
   -D bluez5-codec-lc3plus=enabled \
   -D ffmpeg=enabled \
-  -D lv2=enabled \
   -D session-managers=[]
 
 %meson_build \
     spa-codec-bluez5-aptx \
     spa-codec-bluez5-lc3plus \
-    spa-ffmpeg
+    spa-ffmpeg \
+    spa-filter-graph-plugin-ffmpeg
 
 %install
 install -pm 0755 -D %{_vpath_builddir}/spa/plugins/bluez5/libspa-codec-bluez5-aptx.so \
@@ -59,6 +58,8 @@ install -pm 0755 -D %{_vpath_builddir}/spa/plugins/bluez5/libspa-codec-bluez5-lc
     %{buildroot}%{_libdir}/spa-%{spaversion}/bluez5/libspa-codec-bluez5-lc3plus.so
 install -pm 0755 -D %{_vpath_builddir}/spa/plugins/ffmpeg/libspa-ffmpeg.so \
     %{buildroot}%{_libdir}/spa-%{spaversion}/ffmpeg/libspa-ffmpeg.so
+install -pm 0755 -D %{_vpath_builddir}/spa/plugins/filter-graph/libspa-filter-graph-plugin-ffmpeg.so \
+    %{buildroot}%{_libdir}/spa-%{spaversion}/filter-graph/libspa-filter-graph-plugin-ffmpeg.so
 
 %files
 %license COPYING
@@ -66,8 +67,13 @@ install -pm 0755 -D %{_vpath_builddir}/spa/plugins/ffmpeg/libspa-ffmpeg.so \
 %{_libdir}/spa-%{spaversion}/bluez5/libspa-codec-bluez5-lc3plus.so
 %dir %{_libdir}/spa-%{spaversion}/ffmpeg
 %{_libdir}/spa-%{spaversion}/ffmpeg/libspa-ffmpeg.so
+%{_libdir}/spa-%{spaversion}/filter-graph/libspa-filter-graph-plugin-ffmpeg.so
 
 %changelog
+* Sun Nov 22 2026 Simone Caronni <negativo17@gmail.com> - 1.6.11-2
+- Add FFmpeg filter-graph plugin.
+- Drop unused LV2 build dependency.
+
 * Sun Nov 22 2026 Simone Caronni <negativo17@gmail.com> - 1.6.11-1
 - Update to 1.6.11.
 
