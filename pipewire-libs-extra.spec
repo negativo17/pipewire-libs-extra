@@ -30,7 +30,11 @@ BuildRequires:  sbc-devel
 Requires:       pipewire >= %{version}
 
 %description
-PipeWire media server Bluetooth aptX codec plugin.
+Extra plugins for the PipeWire media server:
+
+- Bluetooth aptX, aptX HD and LC3plus codecs.
+- FFmpeg decoders and encoders.
+- FFmpeg (libavfilter) filters for the filter-chain module.
 
 %prep
 %autosetup -p1 -n pipewire-%{version}
@@ -73,6 +77,7 @@ install -pm 0755 -D %{_vpath_builddir}/spa/plugins/filter-graph/libspa-filter-gr
 * Sun Nov 22 2026 Simone Caronni <negativo17@gmail.com> - 1.6.11-2
 - Add FFmpeg filter-graph plugin.
 - Drop unused LV2 build dependency.
+- Update description.
 
 * Sun Nov 22 2026 Simone Caronni <negativo17@gmail.com> - 1.6.11-1
 - Update to 1.6.11.
