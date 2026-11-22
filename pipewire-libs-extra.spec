@@ -68,6 +68,9 @@ install -pm 0755 -D %{_vpath_builddir}/spa/plugins/ffmpeg/libspa-ffmpeg.so \
 %{_libdir}/spa-%{spaversion}/ffmpeg/libspa-ffmpeg.so
 
 %changelog
+* Sun Nov 22 2026 Simone Caronni <negativo17@gmail.com> - 1.6.11-1
+- Update to 1.6.11.
+
 * Sun Sep 20 2026 Simone Caronni <negativo17@gmail.com> - 1.6.9-1
 - Update to 1.6.9.
 
